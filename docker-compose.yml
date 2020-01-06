@@ -18,7 +18,7 @@ services:
     - DB_CONNECTION=pgsql
     - DB_HOST=db
     - DB_DATABASE=${DB_NAME}
-    - DB_PORT=${DB_PORT}
+    - DB_PORT=${POSTGRES_PORT}
     - DB_USERNAME=${DB_USER}
     - DB_PASSWORD=${DB_PASS}
     - TZ=${TZ}
@@ -45,7 +45,7 @@ services:
   db:
     image: postgres:12
     ports:
-     - "15432:5432"
+     - ${DB_PORT}:${POSTGRES_PORT}
     volumes:
      - db-store:/var/lib/postgresql/data
      - ./logs:/var/log/postgresql
